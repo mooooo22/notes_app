@@ -3,14 +3,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NoteTile extends StatelessWidget {
-  const NoteTile({super.key});
-
+  const NoteTile({super.key, required this.color});
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
         decoration: BoxDecoration(
-          color: const Color(0xffFFCD7A),
+          color: color,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
