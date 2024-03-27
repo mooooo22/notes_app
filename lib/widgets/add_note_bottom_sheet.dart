@@ -39,6 +39,7 @@ class AddNoteBottomSheet extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               const TextField(
+                maxLines: 3, // Increase the number of lines
                 decoration: InputDecoration(
                   hintText: "Description",
                   border: OutlineInputBorder(
@@ -50,6 +51,7 @@ class AddNoteBottomSheet extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 50),
                   backgroundColor: const Color(0xff56EDD8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
@@ -65,3 +67,4 @@ class AddNoteBottomSheet extends StatelessWidget {
     );
   }
 }
+
