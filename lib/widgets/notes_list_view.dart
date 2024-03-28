@@ -20,7 +20,7 @@ class NotesListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(4),
-            child: NoteTile(color: getColor(index)),
+            child: GestureDetector(child: NoteTile(color: getColor(index))),
           );
         },
       ),
