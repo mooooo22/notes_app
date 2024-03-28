@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/views/edit_note_view.dart';
 
 import 'custom_note_card.dart';
 
@@ -20,7 +21,11 @@ class NotesListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(4),
-            child: GestureDetector(child: NoteTile(color: getColor(index))),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, EditNoteView.id);
+                },
+                child: NoteTile(color: getColor(index))),
           );
         },
       ),

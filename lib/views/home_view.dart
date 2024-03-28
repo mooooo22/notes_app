@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/notes_view_body.dart';
-import 'package:notes_app/widgets/add_note_bottom_sheet.dart' show AddNoteBottomSheet;
+import 'package:notes_app/widgets/add_note_bottom_sheet.dart'
+    show AddNoteBottomSheet;
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
+  static String id = 'home_view';
 
   @override
   Widget build(BuildContext context) {
@@ -23,4 +25,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-

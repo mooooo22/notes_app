@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    super.key, required this.onPressed,
+    super.key,
+    required this.onPressed,
+    required this.icon,
   });
-  final  VoidCallback onPressed;
-
+  final VoidCallback onPressed;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,7 +23,7 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
         ),
-        child: const Icon(Icons.search, color: Colors.white),
+        child: Icon(icon, color: Colors.white),
       ),
     );
   }
