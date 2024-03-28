@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/widgets/custom_text_field.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
@@ -28,14 +29,9 @@ class AddNoteBottomSheet extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const TextField(
-                autofocus: true,
-                decoration: InputDecoration(
-                  hintText: "Title",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                  ),
-                ),
+              CustomTextField(
+                onChanged: (String value) {},
+                label: "Title",
               ),
               const SizedBox(height: 20),
               const TextField(
@@ -67,4 +63,3 @@ class AddNoteBottomSheet extends StatelessWidget {
     );
   }
 }
-
