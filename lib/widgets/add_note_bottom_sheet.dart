@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
 
-class AddNoteBottomSheet extends StatelessWidget {
+class AddNoteBottomSheet extends StatefulWidget {
   const AddNoteBottomSheet({super.key});
 
+  @override
+  State<AddNoteBottomSheet> createState() => _AddNoteBottomSheetState();
+}
+
+class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, content;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,6 +45,8 @@ class AddNoteBottomSheet extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Form(
+                  key: formKey,
+                  autovalidateMode: autovalidateMode,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
