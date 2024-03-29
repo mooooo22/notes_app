@@ -1,5 +1,7 @@
 import 'package:hive/hive.dart';
 
+part 'notes_model.g.dart';
+
 @HiveType(typeId: 0)
 class NoteModel extends HiveObject {
   @HiveField(0)
@@ -20,6 +22,7 @@ class NoteModel extends HiveObject {
       required this.time,
       required this.id});
 
+  
   Map<String, dynamic> toMap() {
     return {
       'title': title,
@@ -29,6 +32,7 @@ class NoteModel extends HiveObject {
       'id': id
     };
   }
+  
 
   factory NoteModel.fromMap(Map<String, dynamic> map) {
     return NoteModel(
