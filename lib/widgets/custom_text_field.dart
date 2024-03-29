@@ -4,13 +4,13 @@ class CustomTextField extends StatefulWidget {
   const CustomTextField({
     super.key,
     this.label = '',
-    required this.onChanged,
+    this.onSaved,
     this.maxlines = 1,
     this.hintText = '',
   });
   final int maxlines;
   final String label;
-  final Function(String)? onChanged;
+  final void Function(String?)? onSaved;
   final String hintText;
 
   @override
@@ -44,11 +44,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
       maxLines: widget.maxlines,
       focusNode: _focusNode,
       cursorColor: Colors.blue,
-      onChanged: widget.onChanged,
+      onSaved: widget.onSaved,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(

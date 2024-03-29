@@ -51,20 +51,34 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
-                        onChanged: (String value) {},
+                        onSaved: (value) {
+                          title = value;
+                        },
                         label: "Title",
                       ),
                       const SizedBox(height: 20),
                       CustomTextField(
-                        onChanged: (String value) {},
-                        hintText: "Description",
-                        maxlines: 3,
+                        onSaved: (value) {
+                          content = value;
+                        },
+                        hintText: "Content",
+                        maxlines: 5,
                       ),
-                      const SizedBox(height: 80),
+                      const SizedBox(height: 50),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            formKey.currentState!.save();
+                          } else {
+                            setState(() {
+                              autovalidateMode =
+                                  AutovalidateMode.onUserInteraction;
+                            });
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(double.infinity, 50),
+                          minimumSize:
+                              Size(MediaQuery.of(context).size.width, 50),
                           backgroundColor: const Color(0xff56EDD8),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16),

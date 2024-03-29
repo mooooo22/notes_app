@@ -18,13 +18,16 @@ class EditNoteViewBody extends StatelessWidget {
           const SizedBox(height: 30),
           CustomTextField(
             // Replace TextField with CustomTextField
-            onChanged: (String value) {},
+            onSaved: (value) {
+              // Add the onSaved function
+              
+            },
             label: "Title",
           ),
           const SizedBox(height: 20),
           CustomTextField(
             // Replace TextField with CustomTextField
-            onChanged: (String value) {},
+            onSaved: (value) {},
             hintText: "Description",
             maxlines: 5, // Increase the number of lines
           ),
