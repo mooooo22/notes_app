@@ -15,7 +15,6 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: const Color(0xff56EDD8),
         onPressed: () {
           showModalBottomSheet(
-              isScrollControlled: true,
               context: context,
               builder: (context) => const AddNoteBottomSheet());
         },
