@@ -21,11 +21,14 @@ class AddNoteBottomSheet extends StatelessWidget {
         children: [
           const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Text(
-              "Add a new note",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+            child: Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: Text(
+                "Add a new note",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
@@ -41,14 +44,10 @@ class AddNoteBottomSheet extends StatelessWidget {
                       label: "Title",
                     ),
                     const SizedBox(height: 20),
-                    const TextField(
-                      maxLines: 3, // Increase the number of lines
-                      decoration: InputDecoration(
-                        hintText: "Description",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(16)),
-                        ),
-                      ),
+                    CustomTextField(
+                      onChanged: (String value) {},
+                      hintText: "Description",
+                      maxlines: 3,
                     ),
                     const SizedBox(height: 80),
                     ElevatedButton(

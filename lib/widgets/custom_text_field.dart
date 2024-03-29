@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
     super.key,
-    this.label,
+    this.label = '',
     required this.onChanged,
+    this.maxlines = 1,
+    this.hintText = '',
   });
-
-  final String? label;
+  final int maxlines;
+  final String label;
   final Function(String)? onChanged;
+  final String hintText;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -42,8 +45,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      maxLines: widget.maxlines,
       focusNode: _focusNode,
-      cursorColor: Colors.black,
+      cursorColor: Colors.blue,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
@@ -62,7 +66,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        labelText: '${widget.label}',
+        labelText: widget.label.isNotEmpty ? widget.label : null,
+        hintText: widget.hintText.isNotEmpty ? widget.hintText : null,
         labelStyle: TextStyle(
           color: _isFocused
               ? Theme.of(context).focusColor // Set label color when focused
