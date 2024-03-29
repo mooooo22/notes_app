@@ -36,33 +36,35 @@ class AddNoteBottomSheet extends StatelessWidget {
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomTextField(
-                      onChanged: (String value) {},
-                      label: "Title",
-                    ),
-                    const SizedBox(height: 20),
-                    CustomTextField(
-                      onChanged: (String value) {},
-                      hintText: "Description",
-                      maxlines: 3,
-                    ),
-                    const SizedBox(height: 80),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(double.infinity, 50),
-                        backgroundColor: const Color(0xff56EDD8),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
+                child: Form(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomTextField(
+                        onChanged: (String value) {},
+                        label: "Title",
                       ),
-                      child: const Text("Add Note",
-                          style: TextStyle(color: Colors.black)),
-                    ),
-                  ],
+                      const SizedBox(height: 20),
+                      CustomTextField(
+                        onChanged: (String value) {},
+                        hintText: "Description",
+                        maxlines: 3,
+                      ),
+                      const SizedBox(height: 80),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(double.infinity, 50),
+                          backgroundColor: const Color(0xff56EDD8),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        child: const Text("Add Note",
+                            style: TextStyle(color: Colors.black)),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
