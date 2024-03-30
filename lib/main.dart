@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constants.dart';
+import 'package:notes_app/models/notes_model.dart';
 import 'package:notes_app/views/home_view.dart';
 
 import 'views/edit_note_view.dart';
@@ -9,6 +10,7 @@ import 'views/edit_note_view.dart';
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(KNotesBox);
+  Hive.registerAdapter(NoteModelAdapter());
   runApp(const MyApp());
 }
 

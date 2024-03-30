@@ -1,10 +1,16 @@
 part of 'add_note_cubit.dart';
 
-sealed class NotesState extends Equatable {
-  const NotesState();
-
-  @override
-  List<Object> get props => [];
+sealed class AddNotesState {
+  const AddNotesState();
 }
 
-final class NotesInitial extends NotesState {}
+final class NotesInitial extends AddNotesState {}
+
+final class NotesLoading extends AddNotesState {}
+
+final class NotesSuccess extends AddNotesState {}
+
+final class NotesFaliure extends AddNotesState {
+  final String message;
+  NotesFaliure(this.message);
+}
