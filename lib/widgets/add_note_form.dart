@@ -39,7 +39,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
             maxlines: 5,
           ),
           const SizedBox(height: 50),
-          ElevatedButton(
+          CustomButton(
+            isLoading: false,
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
@@ -51,27 +52,49 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     content: content!,
                     date: DateTime.now().toString(),
                     time: DateTime.now().toString());
-                BlocProvider.of<AddNotesCubit>(context).addNote(
-                  noteModel,
-                );
+                BlocProvider.of<AddNotesCubit>(context).addNote(noteModel);
               } else {
                 setState(() {
                   autovalidateMode = AutovalidateMode.onUserInteraction;
                 });
               }
             },
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size(MediaQuery.of(context).size.width, 50),
-              backgroundColor: const Color(0xff56EDD8),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
-            child:
-                const Text("Add Note", style: TextStyle(color: Colors.black)),
           ),
         ],
       ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({
+    super.key,
+    this.onPressed,
+    required this.isLoading,
+  });
+
+  final void Function()? onPressed;
+  final bool isLoading;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size(MediaQuery.of(context).size.width, 50),
+        backgroundColor: const Color(0xff56EDD8),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      ),
+      child: isLoading
+          ? const SizedBox(
+              height: 30,
+              width: 30,
+              child: CircularProgressIndicator(
+                color: Colors.black,
+              ),
+            )
+          : const Text("Add Note", style: TextStyle(color: Colors.black)),
     );
   }
 }

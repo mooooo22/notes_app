@@ -11,36 +11,29 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNotesCubit, AddNotesState>(
-      listener: (context, state) {
-        if (state is NotesFaliure) {
-          log(state.message);
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(state.message)));
-        }
-        if (state is NotesSuccess) {
-          Navigator.pop(context);
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text("Note added successfully")));
-        }
-      },
-      builder: (context, state) {
-        return Container(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
-            ),
-          ),
-          child: ModalProgressHUD(
+    return BlocProvider(
+      create: (context) => AddNotesCubit(),
+      child: BlocConsumer<AddNotesCubit, AddNotesState>(
+        listener: (context, state) {
+          if (state is NotesFaliure) {
+            log(state.message);
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.message)));
+          }
+          if (state is NotesSuccess) {
+            Navigator.pop(context);
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Note added successfully")));
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
             inAsyncCall: state is NotesLoading ? true : false,
-            child: const Column(
+            child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Padding(
                     padding: EdgeInsets.only(left: 8.0),
@@ -53,19 +46,21 @@ class AddNoteBottomSheet extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: AddNoteForm(),
-                    ),
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: 8.0,
+                        right: 8.0,
+                        top: 8.0,
+                        bottom: MediaQuery.of(context).viewInsets.bottom),
+                    child: const AddNoteForm(),
                   ),
                 ),
               ],
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
