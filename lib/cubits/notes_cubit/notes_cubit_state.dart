@@ -9,7 +9,3 @@ class NotesCubitLoaded extends NotesCubitState {
   final List<NoteModel> notes;
   NotesCubitLoaded(this.notes);
 }
-class NotesCubitError extends NotesCubitState {
-  final String message;
-  NotesCubitError(this.message);
-}
