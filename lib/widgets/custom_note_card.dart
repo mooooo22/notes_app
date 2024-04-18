@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:notes_app/cubits/delete_cubit/delete_cubit.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit_cubit.dart';
 import 'package:notes_app/models/notes_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
@@ -41,7 +42,7 @@ class NoteTile extends StatelessWidget {
                 ),
                 trailing: IconButton(
                     onPressed: () {
-                      note.delete();
+                      BlocProvider.of<DeleteCubit>(context).deleteNote(note);
                       BlocProvider.of<NotesCubitCubit>(context).fetchAllNotes();
                     },
                     icon: const Icon(
