@@ -25,12 +25,13 @@ class NotesListView extends StatelessWidget {
               context.read<NotesCubitCubit>().fetchAllNotes();
             },
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
               itemCount: notes.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(4),
-                  child: NoteTile(color: getColor(index)),
+                  child: NoteTile(color: getColor(index), note: notes[index]),
                 );
               },
             ),
