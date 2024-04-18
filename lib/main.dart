@@ -14,7 +14,6 @@ void main() async {
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(KNotesBox);
   runApp(const MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
