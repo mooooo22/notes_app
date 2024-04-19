@@ -24,7 +24,7 @@ class _NoteTileState extends State<NoteTile> {
     log('NoteTile build called');
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditNoteView.id);
+        Navigator.pushNamed(context, EditNoteView.id, arguments: widget.note);
       },
       child: Container(
           padding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),

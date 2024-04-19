@@ -6,12 +6,13 @@ class CustomTextField extends StatefulWidget {
     this.label = '',
     this.onSaved,
     this.maxlines = 1,
-    this.hintText = '',
+    this.hintText = '',  this.controller,
   });
   final int maxlines;
   final String label;
   final void Function(String?)? onSaved;
   final String hintText;
+  final TextEditingController? controller ;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -45,6 +46,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller ,
       validator: (value) {
         if (value?.isEmpty ?? true) {
           return 'Please enter some text';

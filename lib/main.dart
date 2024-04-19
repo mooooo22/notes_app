@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           ),
           initialRoute: MyHomePage.id,
           routes: {
-            EditNoteView.id: (context) => const EditNoteView(),
+            EditNoteView.id: (context) => const EditNoteView(  ),
             MyHomePage.id: (context) => const MyHomePage(),
           }),
     );
